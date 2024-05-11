@@ -1,4 +1,4 @@
-export interface User {
+/*export interface User {
   id: number
   username: string
   firstName: string
@@ -8,13 +8,24 @@ export interface User {
   image: string
   dateRegistered: string
   roles: string[]
-}
+}*/
 
 export interface UserLog {
-    username: string
-    password: string
-  }
+  username: string
+  password: string
+}
 
-  export interface UserState{
-    user: User
-  }
+export interface UserState {
+  user: User
+}
+
+export interface User {
+  id: 15
+  username: string
+  email: string
+  firstName: string
+  lastName: string
+  gender: string
+  image: string
+  token: string
+}

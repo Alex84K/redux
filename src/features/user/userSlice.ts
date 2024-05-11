@@ -1,37 +1,29 @@
 
 import { createAppSlice } from "../../app/createAppSlice"
 import { User, UserLog, UserState } from "../../utils/type"
-import { logUser } from "../../utils/api"
+import { getUserdummy, logUser } from "../../utils/api"
 
-export interface CounterSliceState {
-  value: number
-  status: "idle" | "loading" | "failed"
-}
 
-const initialState: UserState = {
-  user:{} as User
-}
+
 
 export const userSlice = createAppSlice({
   name: "user",
-  initialState,
+  initialState:{} as User,
   reducers: create => ({
     getUserAsync: create.asyncThunk(
       async (user:UserLog) => {
-        const response = await logUser(user)
+        const response = await getUserdummy(user)
         return response
       },
       {
         pending: state => {},
-        fulfilled: (state, action) => {
-            state.user = action.payload.user
-        },
+        fulfilled: (state, action) => action.payload,
         rejected: state => {},
       },
     ),
   }),
   selectors: {
-    selectUser: user => user.user
+    selectUser: user => user
   },
 })
 

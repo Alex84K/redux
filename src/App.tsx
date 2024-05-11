@@ -1,5 +1,5 @@
 import "./App.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useAppDispatch, useAppSelector } from "./app/hooks"
 import { User, UserLog } from "./utils/type"
 import { logUser } from "./utils/api"
@@ -16,13 +16,18 @@ const App = () => {
       username: username,
       password: password,
     }
+    console.log(us)
     e.preventDefault()
     dispatch(getUserAsync(us))
     console.log(user)
   }
+
+  useEffect(() => {
+    console.log(user)
+  }, [dispatch])
   return (
     <div className="App">
-      <div></div>
+      <div>username: 'kminchelle', password: '0lelplR',</div>
 
       <form onSubmit={handleLogin} className="mb-5" id="form">
         <input
